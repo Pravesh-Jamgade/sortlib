@@ -43,7 +43,8 @@ namespace Utility{
 			for(int i=0; i< a.size(); i++){
 				cout<<a[i]<<" ";
 			}
-		}
+			cout<<'\n';
+		};
 
 	};
 
@@ -67,10 +68,10 @@ namespace Utility{
 	//#2
 	template<typename T>
 	void Common<T>::pArray(){
-		cout<<"size:"<<size<<endl;
 		for(int i=0; i< size; i++){
 			cout<<ptr[i]<<" ";
 		}
+		cout<<'\n';
 	}	
 
 	//#3 Bubble Sort
@@ -82,10 +83,10 @@ namespace Utility{
 
 			// number of times to compare for each iteration
 			for(int j=0; j< size-1-i; j++){
-				if(ptr[i] > ptr[i+1]){
-					int temp = ptr[i];
-					ptr[i] = ptr[i+1];
-					ptr[i+1] = temp;
+				if(ptr[j] > ptr[j+1]){
+					int temp = ptr[j];
+					ptr[j] = ptr[j+1];
+					ptr[j+1] = temp;
 				}
 			}
 		}
@@ -98,7 +99,8 @@ namespace Utility{
 		for(int i=0; i< size-1; i++){
 			int minimum = i;
 			for(int j=i+1; j< size; j++){
-				if(ptr[j] < ptr[i]){
+				if(ptr[j] < ptr[minimum] ){
+					// cout<<ptr[i]<<" - "<<ptr[j]<<endl;
 					minimum = j;
 				}
 			}
@@ -192,7 +194,7 @@ namespace Utility{
 	template<typename T>
 	void Common<T>::QuickSort(){
 		ProcessQuickSort(ptr, 0, size-1);
-		pArray();
+		pArray(); 
 	}	
 
 	template<typename T>
@@ -321,7 +323,7 @@ namespace Utility{
 		int largest = i;
 		if(left< size && ptr[left]> ptr[i]) largest = left;
 		else largest = i;
-		if(right< size && ptr[right]> ptr[i]) largest = right;
+		if(right< size && ptr[right]> ptr[left]) largest = right;
 		if(largest != i){
 			T temp = ptr[i];
 			ptr[i] = ptr[largest];
